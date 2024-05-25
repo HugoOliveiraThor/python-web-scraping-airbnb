@@ -27,5 +27,3 @@ pandas
 3. Download Chrome WebDriver from [chromedriver.chromium.org](https://sites.google.com/chromium.org/driver/)
 4. Extract the chromedriver executable and place it in the 'drivers' folder in the project directory.
 ```
-
-Make sure to adjust the package names and formatting as needed to match your `requirements.txt` file.
