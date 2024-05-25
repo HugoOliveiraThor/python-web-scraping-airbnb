@@ -59,21 +59,16 @@ options = ()
 browser = make_chrome_browser(*options)
 browser.get(dynamic_url)
 
+
+def format_city_name(city):
+    parts = city.split("-")
+    formatted_city = " ".join(part.capitalize() for part in parts if part)
+    return formatted_city
+
 # Define desired check-in and check-out dates (replace with your specific dates)
 check_in_date = "2024-05-20"  # Adjust format as needed by the website
 check_out_date = "2024-05-25"  # Adjust format as needed by the website
 
-# Used when try to find the element and click them
-# local = WebDriverWait(browser, TIME_TO_WAIT).until(
-#     EC.presence_of_element_located((By.ID, 'bigsearch-query-location-input'))
-# )
-# local.send_keys("João Pessoa - PB")
-
-
-# checkin = WebDriverWait(browser, TIME_TO_WAIT).until(
-#     EC.presence_of_element_located((By.CSS_SELECTOR, "button[data-testid='structured-search-input-search-button']"))
-# )
-# checkin.click()
 time.sleep(TIME_TO_WAIT)  # Wait for results to load
 
 # Find all listing cards
@@ -131,7 +126,7 @@ for listing in listings:
 
     # Create a dictionary for the current listing
     listing_data = {
-        "City": city,
+        "City": format_city_name(city),
         "Check In": check_in_date,
         "Check Out": check_out_date,
         "Title": title,
